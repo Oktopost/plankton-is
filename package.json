@@ -1,6 +1,6 @@
 {
-  "name": "oktopost-namespace",
-  "version": "1.1.0",
+  "name": "oktopost-plankton-is",
+  "version": "1.0.0",
   "description": "Namespace library for js",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Oktopost/spacename.git"
+    "url": "https://github.com/Oktopost/plankton-is.git"
   },
   "authors": [
     {
@@ -20,9 +20,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Oktopost/spacename/issues"
+    "url": "https://github.com/Oktopost/plankton-is/issues"
   },
-  "homepage": "https://github.com/Oktopost/spacename#readme",
+  "homepage": "https://github.com/Oktopost/plankton-is#readme",
   "devDependencies": {
     "chai": "^3.5.0",
     "gulp": "^3.9.1",
@@ -32,5 +32,8 @@
     "istanbul": "^0.4.5",
     "coveralls": "2.10.0",
     "mocha": "^3.2.0"
+  },
+  "dependencies": {
+    "oktopost-namespace": "^1.1.0"
   }
 }
