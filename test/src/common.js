@@ -1,7 +1,7 @@
 'use strict';
 
 
-const is = require('../../src/is');
+const is = require('../../index').is;
 const assert = require('chai').assert;
 
 

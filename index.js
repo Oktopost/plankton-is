@@ -1,9 +1,8 @@
 'use strict';
 
 
-var is = require('./src/is.js');
+var Plankton = require('./namespace').Plankton;
 
+require('./src/is');
 
-module.exports = {
-	is: is
-};
+module.exports = Plankton;
