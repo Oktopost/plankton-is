@@ -34,6 +34,6 @@
     "mocha": "^3.2.0"
   },
   "dependencies": {
-    "oktopost-namespace": "^1.1.0"
+    "oktopost-namespace": "^1.2.0"
   }
 }
