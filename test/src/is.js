@@ -8,6 +8,24 @@ const common = require('./common');
 
 suite('is module', function() {
 	test('is', function() {
+		common.assertTrueFor(is, [
+			'array',
+			'object',
+			'string',
+			'number',
+			'negative',
+			'float',
+			'negative float',
+			'Infinity',
+			'negative Infinity',
+			'true',
+			'true object',
+			'function'
+		]);
+	});
+	
+	
+	test('is.true', function() {
 		common.assertTrueFor(is.true, [
 			'array',
 			'object',
@@ -90,6 +108,34 @@ suite('is module', function() {
 	test('is.string.notEmpty', function() {
 		common.assertTrueFor(is.string.notEmpty, [
 			'string'
+		]);
+	});
+	
+	
+	test('is.collection', () => {
+		common.assertTrueFor(is.collection, [
+			'empty string',
+			'string',
+			'empty object',
+			'object',
+			'empty array',
+			'array'
+		]);
+	});
+	
+	test('is.collection.empty', () => {
+		common.assertTrueFor(is.collection.empty, [
+			'empty string',
+			'empty object',
+			'empty array'
+		]);
+	});
+	
+	test('is.collection.notEmpty', () => {
+		common.assertTrueFor(is.collection.notEmpty, [
+			'string',
+			'object',
+			'array'
 		]);
 	});
 	
