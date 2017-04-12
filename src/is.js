@@ -22,7 +22,7 @@ require('../namespace').namespace('Plankton', function() {
 	 * @returns {boolean}
 	 */
 	is.array = function(subject) {
-		return toString.call(subject) === '[object Array]';
+		return Object.prototype.toString.call(subject) === '[object Array]';
 	};
 	
 	/**
@@ -47,7 +47,7 @@ require('../namespace').namespace('Plankton', function() {
 	 * @returns {boolean}
 	 */
 	is.object = function(subject) {
-		return toString.call(subject) === '[object Object]';
+		return Object.prototype.toString.call(subject) === '[object Object]';
 	};
 	
 	/**
@@ -72,7 +72,7 @@ require('../namespace').namespace('Plankton', function() {
 	 * @returns {boolean}
 	 */
 	is.string = function(subject) {
-		return toString.call(subject) === '[object String]';
+		return Object.prototype.toString.call(subject) === '[object String]';
 	};
 	
 	/**
@@ -179,7 +179,7 @@ require('../namespace').namespace('Plankton', function() {
 	 * @returns {boolean}
 	 */
 	is.number = function(subject) {
-		return toString.call(subject) === '[object Number]';
+		return Object.prototype.toString.call(subject) === '[object Number]';
 	};
 	
 	/**
@@ -187,7 +187,7 @@ require('../namespace').namespace('Plankton', function() {
 	 * @returns {boolean}
 	 */
 	is.bool = function(subject) {
-		return toString.call(subject) === '[object Boolean]';
+		return Object.prototype.toString.call(subject) === '[object Boolean]';
 	};
 	
 	
@@ -212,7 +212,7 @@ require('../namespace').namespace('Plankton', function() {
 	 * @returns {boolean}
 	 */
 	is.function = function(subject) {
-		return toString.call(subject) === '[object Function]';
+		return Object.prototype.toString.call(subject) === '[object Function]';
 	};
 	
 	/**
@@ -220,7 +220,7 @@ require('../namespace').namespace('Plankton', function() {
 	 * @returns {boolean}
 	 */
 	is.NaN = function(subject) {
-		return isNaN(subject) && toString.call(subject) === '[object Number]';
+		return isNaN(subject) && Object.prototype.toString.call(subject) === '[object Number]';
 	};
 	
 	/**
