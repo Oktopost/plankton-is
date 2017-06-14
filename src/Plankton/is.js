@@ -1,4 +1,4 @@
-require('../namespace').namespace('Plankton', function() {
+namespace('Plankton', function() {
 	'use strict';
 	
 	

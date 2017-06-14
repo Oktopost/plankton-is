@@ -1,8 +1,10 @@
 'use strict';
 
 
-var Plankton = require('./namespace').Plankton;
+global.INDEX_DIRECTORY = __dirname;
+require('oktopost-namespace').dynamic();
 
-require('./src/is');
 
-module.exports = Plankton;
+var is;
+namespace('Plankton', (root) => { is = root.Plankton.is; });
+module.exports = is;
