@@ -1,6 +1,3 @@
-'use strict';
-
-
 const is = require('../../index').is;
 const assert = require('chai').assert;
 
