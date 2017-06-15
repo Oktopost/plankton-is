@@ -7,7 +7,8 @@ namespace('Plankton', function() {
 
 
 	/**
-	 * @name Plankton.is
+	 * @class Plankton.is
+	 * @alias is
 	 * 
 	 * @param subject
 	 * @return {boolean}
