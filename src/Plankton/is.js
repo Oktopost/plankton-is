@@ -2,8 +2,8 @@ namespace('Plankton', function()
 {
 	var ARRAY_INDEX_REGEX = /^0$|^[1-9]\d*$/;
 	var ARRAY_INDEX_MAX_VALUE = 4294967294;
-
-
+	
+	
 	/**
 	 * @class Plankton.is
 	 * @alias is
@@ -70,6 +70,21 @@ namespace('Plankton', function()
 	is.object.notEmpty = function (subject)
 	{
 		return is.object(subject) && Object.keys(subject).length > 0;
+	};
+	
+	
+	/**
+	 * @param {*} subject
+	 * @returns {boolean}
+	 */
+	is.objectLiteral = function(subject)
+	{
+		if (!is.object(subject))
+		{
+			return false;
+		}
+		
+		return is.undefined(subject.constructor) || subject.constructor === Object;
 	};
 	
 	
@@ -153,7 +168,7 @@ namespace('Plankton', function()
 	 */
 	is.collection = function(subject)
 	{
-		return is.object(subject) || is.array(subject) || is.string(subject);
+		return (is.objectLiteral(subject) || is.array(subject) || is.string(subject));
 	};
 	
 	/**
@@ -166,7 +181,7 @@ namespace('Plankton', function()
 		{
 			return is.array.empty(subject);
 		}
-		else if (is.object(subject))
+		else if (is.objectLiteral(subject))
 		{
 			return is.object.empty(subject);
 		}
@@ -253,7 +268,7 @@ namespace('Plankton', function()
 	 */
 	is.NaN = function(subject)
 	{
-		return isNaN(subject) && Object.prototype.toString.call(subject) === '[object Number]';
+		return Object.prototype.toString.call(subject) === '[object Number]' && isNaN(subject);
 	};
 	
 	/**
@@ -280,7 +295,7 @@ namespace('Plankton', function()
 	 */
 	is.jsObject = function(subject)
 	{
-		return subject instanceof Object;
+		return subject instanceof Object || (!is.null(subject) && typeof subject === 'object');
 	};
 	
 	/**
@@ -303,7 +318,7 @@ namespace('Plankton', function()
 			return is.collection.empty(subject);
 		}
 		
-		throw 'Subject is not Array, Object or String';
+		throw new Error('Subject is not Array, Object or String');
 	};
 	
 	/**
@@ -353,7 +368,7 @@ namespace('Plankton', function()
 	
 	/**
 	 * @param {*} subject
-	 * @retrns {boolean}
+	 * @returns {boolean}
 	 */
 	is.index = function(subject)
 	{

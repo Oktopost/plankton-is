@@ -17,7 +17,9 @@ suite('is module', function() {
 			'negative Infinity',
 			'true',
 			'true object',
-			'function'
+			'function',
+			'instance',
+			'create instance'
 		]);
 	});
 	
@@ -35,7 +37,9 @@ suite('is module', function() {
 			'negative Infinity',
 			'true',
 			'true object',
-			'function'
+			'function',
+			'instance',
+			'create instance'
 		]);
 	});
 	
@@ -72,19 +76,36 @@ suite('is module', function() {
 	test('is.object', function() {
 		common.assertTrueFor(is.object, [
 			'empty object',
-			'object'
+			'object',
+			'instance',
+			'null instance',
+			'create instance',
+			'literal instance'
 		]);
 	});
 	
 	test('is.object.empty', function() {
 		common.assertTrueFor(is.object.empty, [
-			'empty object'
+			'empty object',
+			'instance',
+			'null instance',
+			'literal instance',
+			'create instance'
 		]);
 	});
 	
 	test('is.object.notEmpty', function() {
 		common.assertTrueFor(is.object.notEmpty, [
 			'object'
+		]);
+	});
+	
+	test('is.objectLiteral', function() {
+		common.assertTrueFor(is.objectLiteral, [
+			'empty object',
+			'object',
+			'null instance',
+			'literal instance'
 		]);
 	});
 	
@@ -116,7 +137,9 @@ suite('is module', function() {
 			'empty object',
 			'object',
 			'empty array',
-			'array'
+			'array',
+			'null instance',
+			'literal instance'
 		]);
 	});
 	
@@ -124,7 +147,9 @@ suite('is module', function() {
 		common.assertTrueFor(is.collection.empty, [
 			'empty string',
 			'empty object',
-			'empty array'
+			'empty array',
+			'null instance',
+			'literal instance'
 		]);
 	});
 	
@@ -265,7 +290,9 @@ suite('is module', function() {
 			'negative Infinity',
 			'true',
 			'true object',
-			'function'
+			'function',
+			'instance',
+			'create instance'
 		]);
 	});
 	
@@ -282,15 +309,21 @@ suite('is module', function() {
 			'negative Infinity',
 			'true',
 			'true object',
-			'function'
+			'function',
+			'instance',
+			'create instance'
 		]);
 	});
 	
 	suite('is.empty', function() {
 		
 		test('on empty set', function() {
+			function a() {};
+			
 			assert.isTrue(is.empty([]));
 			assert.isTrue(is.empty({}));
+			assert.isTrue(is.empty(new Object(null)));
+			assert.isTrue(is.empty(new Object({})));
 			assert.isTrue(is.empty(''));
 		});
 		
@@ -298,16 +331,19 @@ suite('is module', function() {
 			assert.isFalse(is.empty([1]));
 			assert.isFalse(is.empty({'a': 1}));
 			assert.isFalse(is.empty('b'));
+			assert.isFalse(is.empty(new Object({a: 1})));
 		});
 		
-		test('not sets return false', function () {
+		test('not sets throw exception', function () {
 			common.assertExceptionFor(is.empty, common.TEST_KEYS, [
 				'empty array',
 				'array',
 				'empty object',
 				'object',
 				'empty string',
-				'string'
+				'string',
+				'null instance',
+				'literal instance'
 			]);
 		});
 	});

@@ -2,6 +2,8 @@ const is = require('../../index').is;
 const assert = require('chai').assert;
 
 
+function ClassName() {}
+
 const TEST_SUBJECTS = {
 	'empty array':			[],
 	'array':				[1, 2],
@@ -21,7 +23,11 @@ const TEST_SUBJECTS = {
 	'false':				false,
 	'true object':			new Boolean(true),
 	'null':					null,
-	'function':				() => {}
+	'function':				() => {},
+	'instance':				new ClassName(),
+	'null instance':		Object.create(null),
+	'literal instance':		Object.create({}),
+	'create instance':		Object.create(ClassName)
 };
 
 const TEST_KEYS = Object.keys(TEST_SUBJECTS);
@@ -45,9 +51,9 @@ function assertTrueFor(callback, keys, ignoreKeys = []) {
 		
 		
 		if (is.defined(keysMap[key])) {
-			assert.isTrue(result);
+			assert.isTrue(result, 'Failed for ' + key);
 		} else {
-			assert.isFalse(result);
+			assert.isFalse(result, 'Failed for ' + key);
 		}
 	})
 }
